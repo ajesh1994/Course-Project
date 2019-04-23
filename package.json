@@ -6,8 +6,8 @@
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
     "prestart:api": "node tools/createMockDb.js",
     "start:api": "node tools/apiServer.js",
-    "test": "jest --watchAll",
-    "unit": "jest --testPathPattern=unit\\.test\\.js --watchAll",
+    "test": "jest --coverage",
+    "unit": "jest --testPathPattern=unit\\.test\\.js",
     "e2e": "jest --testPathPattern=e2e\\.test\\.js",
     "test:ci": "jest",
     "clean:build": "rimraf ./build && mkdir build",
@@ -19,6 +19,9 @@
   "jest": {
     "setupFiles": [
       "./tools/testSetup.js"
+    ],
+    "coverageReporters": [
+      "text"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/fileMock.js",
